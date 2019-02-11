@@ -20,3 +20,29 @@ Output:
 ```
 
 ---
+
+### Interpolation:
+Selectors:   
+```TypeScript
+template: `
+    <h2>
+      Welcome {{name}}
+    </h2>
+    <h2>{{2+2}}</h2>
+    <h2>{{"Welcome " + name}}</h2>
+    <h2>{{name.length}}</h2>
+    <h2>{{name.toUpperCase()}}</h2>
+    <h2>{{greetUser()}}</h2>
+    <h2>{{siteUrl}}</h2>
+  `
+```
+Output:
+```TypeScript
+public name = "Henry From BU";
+public siteUrl = window.location.href;
+greetUser(){
+    return "Hi " + this.name;
+}
+```
+
+---
