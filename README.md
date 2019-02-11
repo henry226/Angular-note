@@ -13,8 +13,9 @@ Output:
 ```html
 <!-- Custom HTML Tag -->
 <app-test></app-test>
-<!-- class -->
+<!-- Class -->
 <div class="app-test"></div>
+<!-- Attribute -->
 <div app-test></div>
 ```
 
