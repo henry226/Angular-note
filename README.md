@@ -9,7 +9,7 @@ selector: '.app-test'
 // Attribute
 selector: ['app-test']
 ```
-Output:
+HTML:
 ```html
 <!-- Custom HTML Tag -->
 <app-test></app-test>
@@ -18,11 +18,15 @@ Output:
 <!-- Attribute -->
 <div app-test></div>
 ```
-
+Output:
+```html
+Welcome to Henry!
+test works!
+```
 ---
 
 ### Interpolation:
-Selectors:   
+Template:   
 ```TypeScript
 template: `
     <h2>
@@ -36,7 +40,7 @@ template: `
     <h2>{{siteUrl}}</h2>
   `
 ```
-Output:
+Class
 ```TypeScript
 public name = "Henry From BU";
 public siteUrl = window.location.href;
@@ -45,4 +49,14 @@ greetUser(){
 }
 ```
 
+Output: 
+```html
+Welcome Henry From BU
+4
+Welcome Henry From BU
+13
+HENRY FROM BU
+Hi Henry From BU
+http://localhost:4200/
+```
 ---
