@@ -48,7 +48,6 @@ greetUser(){
     return "Hi " + this.name;
 }
 ```
-
 Output: 
 ```html
 Welcome Henry From BU
@@ -58,5 +57,37 @@ Welcome Henry From BU
 HENRY FROM BU
 Hi Henry From BU
 http://localhost:4200/
+```
+---
+
+### Style Binding:
+Template:   
+```TypeScript
+template: `
+    <h2>
+      Welcome {{name}}
+    </h2>
+    <h2 [style.color]="hasError ? 'red' : 'green'">Style Binding 1</h2>
+    <h2 [style.color]="highlightColor">Style Binding 2</h2>
+    <h2 [ngStyle]="titleStyles">Style Binding 3</h2>
+  `
+```
+Class
+```TypeScript
+public name = "Henry From BU";
+public hasError = true;
+public isSpecial = true;
+public highlightColor = "orange"
+public titleStyles = {
+  color: "blue",
+  fontStyle: "italic"
+}
+```
+Output: 
+```html
+Welcome Henry From BU (Black)
+Style Binding 1 (Red)
+Style Binding 2 (Orange)
+Style Binding 3 (Blue with Italic)
 ```
 ---
