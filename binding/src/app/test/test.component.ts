@@ -6,17 +6,23 @@ import { Component, OnInit } from '@angular/core';
     <h2>
       Welcome {{name}}
     </h2>
-    <input [id]="myId" type="text" value="Henry">
-    <input [disabled]="isDisabled" id="{{myId}}" type="text" value="Henry">
+    <h2 [style.color]="hasError ? 'red' : 'green'">Style Binding 1</h2>
+    <h2 [style.color]="highlightColor">Style Binding 2</h2>
+    <h2 [ngStyle]="titleStyles">Style Binding 3</h2>
   `,
   styles: []
 })
 export class TestComponent implements OnInit {
 
   public name = "Henry From BU";
-  public siteUrl = window.location.href;
-  public myId = "testId"
-  public isDisabled = true;
+  public hasError = true;
+  public isSpecial = true;
+  public highlightColor = "orange"
+  public titleStyles = {
+    color: "blue",
+    fontStyle: "italic"
+  }
+
   constructor() { }
 
   ngOnInit() {
