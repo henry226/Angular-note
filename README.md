@@ -118,7 +118,6 @@ onClick(event){
   console.log(event);
   this.greeting = event.type;
 }
-}
 ```
 
 ---
