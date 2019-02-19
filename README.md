@@ -91,3 +91,34 @@ Style Binding 2 (Orange)
 Style Binding 3 (Blue with Italic)
 ```
 ---
+
+### Event Binding:
+Template:   
+```TypeScript
+template: `
+  <h2>
+    Welcome {{name}}
+  </h2>
+  <button (click)="onClick($event)">Greet</button>
+  <button (click)="greeting='Welcome to Henry's Angular App">Greet</button>
+  {{greeting}}
+  `
+```
+Class
+```TypeScript
+public name = "Henry From BU";
+public greeting ="";
+
+constructor() { }
+
+ngOnInit() {
+}
+
+onClick(event){
+  console.log(event);
+  this.greeting = event.type;
+}
+}
+```
+
+---
