@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
       Welcome {{name}}
     </h2>
     <button (click)="onClick($event)">Greet</button>
-    <button (click)="greeting='hshshs'">Greet</button>
+    <button (click)="greeting='Welcome to Henrys Angular App'">Greet</button>
+
     {{greeting}}
   `,
   styles: []
