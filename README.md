@@ -40,7 +40,7 @@ template: `
     <h2>{{siteUrl}}</h2>
   `
 ```
-Class
+Class:
 ```TypeScript
 public name = "Henry From BU";
 public siteUrl = window.location.href;
@@ -72,7 +72,7 @@ template: `
     <h2 [ngStyle]="titleStyles">Style Binding 3</h2>
   `
 ```
-Class
+Class:
 ```TypeScript
 public name = "Henry From BU";
 public hasError = true;
@@ -104,7 +104,7 @@ template: `
   {{greeting}}
   `
 ```
-Class
+Class:
 ```TypeScript
 public name = "Henry From BU";
 public greeting ="";
@@ -131,7 +131,7 @@ template: `
   <button (click)="logMessage(myInput)">Log</button>
   `
 ```
-Class
+Class:
 ```TypeScript
 public name = "Henry From BU";
 public greeting ="";
@@ -144,6 +144,39 @@ ngOnInit() {
 logMessage(value){
   console.log(value)
 }
+```
+
+---
+
+### Two Way Binding:
+Template:   
+```TypeScript
+template: `
+  <input [(ngModel)]="name" type="text">
+  {{name}}
+  `
+```
+Class:
+```TypeScript
+public name = "";
+
+constructor() { }
+
+ngOnInit() {
+}
+
+logMessage(value){
+  console.log(value)
+}
+```
+app.module.ts:
+```typeScript
+import { FormsModule } from '@angular/forms';
+
+imports: [
+    BrowserModule,
+    FormsModule
+]
 ```
 
 ---
