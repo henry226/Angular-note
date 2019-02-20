@@ -269,3 +269,39 @@ yellow
 ```
 
 ---
+
+### Component Interaction:
+Template:   
+```TypeScript
+template: `
+  <h2>{{"Hello " + name}}</h2>
+  <button (click)="fireEvent()">Send Event</button>
+  `
+```
+Class:
+```TypeScript
+// get data from the parent component
+@Input('parentData') public name;
+// send data from child component to parent component
+@Output() public childEvent = new EventEmitter();
+
+constructor() { }
+
+ngOnInit() {
+}
+
+fireEvent(){
+  this.childEvent.emit("Hey Henry");
+}
+```
+app.component.html
+```html
+<app-test (childEvent)="message=$event" [parentData]="name"></app-test>
+```
+app.component.ts
+```ts
+title = 'app';
+public name = "Henry";
+public message = "";
+```
+---
