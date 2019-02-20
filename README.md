@@ -121,3 +121,29 @@ onClick(event){
 ```
 
 ---
+
+### Template Reference:
+Template:   
+```TypeScript
+template: `
+  <h2>Welcome {{name}}</h2>
+  <input #myInput type="text">  
+  <button (click)="logMessage(myInput)">Log</button>
+  `
+```
+Class
+```TypeScript
+public name = "Henry From BU";
+public greeting ="";
+
+constructor() { }
+
+ngOnInit() {
+}
+
+logMessage(value){
+  console.log(value)
+}
+```
+
+---
