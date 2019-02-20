@@ -206,3 +206,26 @@ ngOnInit() {
 ```
 
 ---
+
+### ngSwitch Directive:
+Template:   
+```TypeScript
+template: `
+  <div [ngSwitch]="color">
+    <div *ngSwitchCase="'red'">You picked red<</div>
+    <div *ngSwitchCase="'blue'">You picked blue</div>
+    <div *ngSwitchCase="'green'">You picked green</div>
+    <div *ngSwitchDefault>Pick again</div>
+  </div>
+  `
+```
+Class:
+```TypeScript
+public color = "green";
+constructor() { }
+
+ngOnInit() {
+}
+```
+
+---
