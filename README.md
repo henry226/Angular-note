@@ -1,4 +1,4 @@
-# Angular-App
+# Angular Note
 ### Component:
 Selectors:   
 ```TypeScript
