@@ -1,5 +1,5 @@
 # Angular Note
-### Component:
+### Component
 Selectors:   
 ```TypeScript
 // Custom HTML Tag
@@ -25,7 +25,7 @@ test works!
 ```
 ---
 
-### Interpolation:
+### Interpolation
 Template:   
 ```TypeScript
 template: `
@@ -60,7 +60,7 @@ http://localhost:4200/
 ```
 ---
 
-### Style Binding:
+### Style Binding
 Template:   
 ```TypeScript
 template: `
@@ -92,7 +92,7 @@ Style Binding 3 (Blue with Italic)
 ```
 ---
 
-### Event Binding:
+### Event Binding
 Template:   
 ```TypeScript
 template: `
@@ -122,7 +122,7 @@ onClick(event){
 
 ---
 
-### Template Reference:
+### Template Reference
 Template:   
 ```TypeScript
 template: `
@@ -148,7 +148,7 @@ logMessage(value){
 
 ---
 
-### Two Way Binding:
+### Two Way Binding
 Template:   
 ```TypeScript
 template: `
@@ -181,7 +181,7 @@ imports: [
 
 ---
 
-### ngIf Directive:
+### ngIf Directive
 Template:   
 ```TypeScript
 template: `
@@ -207,7 +207,7 @@ ngOnInit() {
 
 ---
 
-### ngSwitch Directive:
+### ngSwitch Directive
 Template:   
 ```TypeScript
 template: `
@@ -230,7 +230,7 @@ ngOnInit() {
 
 ---
 
-### ngFor Directive:
+### ngFor Directive
 Template:   
 ```TypeScript
 template: `
@@ -270,7 +270,7 @@ yellow
 
 ---
 
-### Component Interaction:
+### Component Interaction
 Template:   
 ```TypeScript
 template: `
