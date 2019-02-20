@@ -180,3 +180,29 @@ imports: [
 ```
 
 ---
+
+### ngIf Directive:
+Template:   
+```TypeScript
+template: `
+  <div *ngIf="displayName; then thenBlock; else elseBlock"></div>
+
+  <ng-template #thenBlock>
+    <h2>Name shown</h2>
+  </ng-template>
+
+  <ng-template #elseBlock>
+    <h2>hidden</h2>
+  </ng-template>
+  `
+```
+Class:
+```TypeScript
+displayName = true;
+constructor() { }
+
+ngOnInit() {
+}
+```
+
+---
