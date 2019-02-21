@@ -367,3 +367,100 @@ Thu Feb 21 2019 11:41:24 GMT-0500 (Eastern Standard Time)
 ```
 
 ---
+
+### Service
+employee-list.component.ts 
+```TypeScript
+import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from './../employee.service'
+
+@Component({
+  selector: 'employee-list',
+  template: `
+    <h2>Employee List</h2>
+    <ul *ngFor="let employee of employees">
+      <li>{{employee.name}}</li>
+    </ul>
+  `,
+  styleUrls: ['./employee-list.component.scss']
+})
+export class EmployeeListComponent implements OnInit {
+
+  public employees = [];
+
+  constructor(private _employeeService: EmployeeService) { }
+
+  ngOnInit() {
+    this.employees = this._employeeService.getEmployee();
+  }
+
+}
+```
+employee-detail.component.ts 
+```TypeScript
+import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from './../employee.service'
+
+@Component({
+  selector: 'employee-detail',
+  template: `
+    <h2>Employee Detail</h2>
+    <ul *ngFor="let employee of employees">
+      <li>{{employee.id}}. {{employee.name}} - {{employee.age}}</li>
+    </ul>
+  `,
+  styleUrls: ['./employee-detail.component.scss']
+})
+export class EmployeeDetailComponent implements OnInit {
+
+  public employees = [];
+
+  constructor(private _employeeService: EmployeeService) { }
+
+  ngOnInit() {
+    this.employees = this._employeeService.getEmployee();
+  }
+
+}
+```
+employee.service.ts
+```typeScript
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class EmployeeService {
+
+  constructor() { }
+
+  getEmployee(){
+    return [
+      {"id": 1, "name": "Andrew", "age": 33},
+      {"id": 2, "name": "Brandon", "age": 25},
+      {"id": 3, "name": "Christina", "age": 26},
+      {"id": 4, "name": "Elena", "age": 28}
+    ];
+  }
+}
+```
+Added injector in app.module.ts
+```ts
+// Register with injector
+providers: [EmployeeService],
+```
+Output
+```html
+Employee List
+Andrew
+Brandon
+Christina
+Elena
+Employee Detail
+1. Andrew - 33
+2. Brandon - 25
+3. Christina - 26
+4. Elena - 28
+```
+
+---
