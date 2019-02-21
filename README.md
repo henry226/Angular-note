@@ -294,14 +294,76 @@ fireEvent(){
   this.childEvent.emit("Hey Henry");
 }
 ```
-app.component.html
+app.component.html:
 ```html
 <app-test (childEvent)="message=$event" [parentData]="name"></app-test>
 ```
-app.component.ts
+app.component.ts:
 ```ts
 title = 'app';
 public name = "Henry";
 public message = "";
 ```
+
+---
+
+### Pipes
+Template:   
+```TypeScript
+template: `
+  <h2>{{ name }}</h2>
+  <h2>{{ name | lowercase }}</h2>
+  <h2>{{ name | uppercase }}</h2>
+  <h2>{{ message | titlecase }}</h2>
+  <h2>{{ name | slice:2:4 }}</h2>
+  <h2>{{ person | json}}</h2>
+
+  <h2>{{ 5.678 | number: '1.2-3'}}</h2>
+  <h2>{{ 5.678 | number: '3.4-5'}}</h2>
+  <h2>{{ 5.678 | number: '3.1-2'}}</h2>
+
+  <h2>{{ 0.25 | percent }}</h2>
+  <h2> {{ 0.25 | currency: 'EUR' }}</h2>
+
+  <h2>{{ date }}</h2>
+  <h2>{{ date | date:'short' }}</h2>
+  <h2>{{ date | date:'shortDate' }}</h2>
+  <h2>{{ date | date:'shortTime' }}</h2>
+  `
+```
+Class:
+```TypeScript
+public name = "Henry";
+public message = "Welcome to Henry's Website";
+public person = {
+  "firstName" : "John",
+  "lastName" : "Doe"
+}
+
+public date = new Date();
+
+constructor() { }
+
+ngOnInit() {
+}
+```
+Output:
+```html
+Henry
+henry
+HENRY
+Welcome To Henry's Website
+nr
+{ "firstName": "John", "lastName": "Doe" }
+5.678
+005.6780
+005.68
+25%
+€0.25
+Thu Feb 21 2019 11:41:24 GMT-0500 (Eastern Standard Time)
+2/21/19, 11:41 AM
+2/21/19
+11:41 AM
+```
+
 ---
