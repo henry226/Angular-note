@@ -464,3 +464,87 @@ Employee Detail
 ```
 
 ---
+
+### Fetching data using HTTP
+employees.json
+```json
+[
+  {"id": 1, "name": "Andrew", "age": 30},
+  {"id": 2, "name": "Brandon", "age": 25},
+  {"id": 3, "name": "Christina", "age": 26},
+  {"id": 4, "name": "Elena", "age": 33},
+  {"id": 5, "name": "Felicia", "age": 25}
+]
+```
+employee.ts
+```ts
+export interface IEmployee {
+    id: number,
+    name: string,
+    age: number
+}
+```
+added to app.module.ts
+```ts
+// fetch data using http
+import { HttpClientModule } from '@angular/common/http'
+
+imports: [
+    BrowserModule,
+    AppRoutingModule,
+    // fetch data using http
+    HttpClientModule
+  ]
+```
+employee.service.ts
+```typeScript
+export class EmployeeService {
+
+  private _url: string = "/assets/data/employees.json";
+
+  constructor(private http: HttpClient) { }
+
+  getEmployee(): Observable<IEmployee[]>{
+    return this.http.get<IEmployee[]>(this._url);
+  }
+}
+```
+employee-list.component.ts
+```ts
+public employees = [];
+
+constructor(private _employeeService: EmployeeService) { }
+
+ngOnInit() {
+  this._employeeService.getEmployee()
+      .subscribe(data => this.employees = data);
+}
+```
+employee-detail.component.ts
+```ts
+public employees = [];
+
+constructor(private _employeeService: EmployeeService) { }
+
+ngOnInit() {
+  this._employeeService.getEmployee()
+      .subscribe(data => this.employees = data);
+}
+```
+Output
+```html
+Employee List
+Andrew
+Brandon
+Christina
+Elena
+Felicia
+Employee Detail
+1. Andrew - 30
+2. Brandon - 25
+3. Christina - 26
+4. Elena - 33
+5. Felicia - 25
+```
+
+---
