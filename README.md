@@ -548,3 +548,45 @@ Employee Detail
 ```
 
 ---
+
+### HTTP error handling
+employees.service.ts
+```ts
+import { throwError, Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
+private _url: string = "/assets/data/employees.json";
+
+constructor(private http: HttpClient) { }
+
+getEmployee(): Observable<IEmployee[]>{
+  return this.http.get<IEmployee[]>(this._url)
+                  .pipe(catchError(this.errorHandler));
+}
+
+errorHandler(error: HttpErrorResponse){
+  return Observable.throw(error.message || "Server Error");
+}
+```
+employee.component.ts
+```ts
+export class EmployeeDetailComponent implements OnInit {
+  public employees = [];
+  public errorMsg;
+  constructor(private _employeeService: EmployeeService) { }
+  ngOnInit() {
+    this._employeeService.getEmployee()
+        .subscribe(data => this.employees = data,
+                   error => this.errorMsg = error);
+  }
+}
+```
+Output
+```html
+Employee List
+TypeError: rxjs__WEBPACK_IMPORTED_MODULE_3__.Observable.throw is not a function
+Employee Detail
+TypeError: rxjs__WEBPACK_IMPORTED_MODULE_3__.Observable.throw is not a function
+```
+
+---
