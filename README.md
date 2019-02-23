@@ -756,3 +756,50 @@ goNext(){
 ```
 
 ---
+
+### Optional Route parameters
+department-detail.component.ts
+```ts
+template: `
+    <h3>You selected deaprtment with id = {{departmentId}}</h3>
+    <a (click)="goPrevious()">Previous </a>
+    <a (click)="goNext()">Next </a>
+
+    <div>
+      <button (click)="gotoDepartments()">Back</button>
+    </div>
+  `
+
+gotoDepartments(){
+    let selectedId = this.departmentId ? this.departmentId : null;
+    this.router.navigate(['departments', {id: selectedId}]);
+}
+```
+department-list.component.ts
+```ts
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+
+template: `
+    <h3>Department List</h3>
+    <ul class="items">
+      <li (click)="onSelect(department)" [class.selected]="isSelected(department)" *ngFor="let department of departments">
+        <span class="badge">{{department.id}}</span> {{department.name}}
+      </li>
+    </ul>
+  `
+
+constructor(private router: Router, private route: ActivatedRoute) { }
+
+ngOnInit() {
+  this.route.paramMap.subscribe((params: ParamMap) => {
+    let id = parseInt(params.get('id'));
+    this.selectedId = id;
+  });
+}
+
+isSelected(department){
+  return department.id === this.selectedId;
+}
+```
+
+---
