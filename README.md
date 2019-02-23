@@ -653,3 +653,73 @@ declarations: [
 ```
 
 ---
+
+### Route Parameters
+app-routing.module.ts
+```ts
+import { DepartmentDetailComponent } from './department-detail/department-detail.component';
+
+const routes: Routes = [
+  ...
+  { path: 'departments/:id', component:DepartmentDetailComponent},
+  ...
+];
+
+export const routingComponents = [DepartmentListComponent, 
+                                  EmployeeListComponent, 
+                                  PageNotFoundComponent,
+                                  DepartmentDetailComponent]
+```
+department-list-component.ts
+```ts
+template: `
+    <h3>Department List</h3>
+    <ul class="items">
+      <li (click)="onSelect(department)" *ngFor="let department of departments">
+        <span class="badge">{{department.id}}</span> {{department.name}}
+      </li>
+    </ul>
+  `
+
+export class DepartmentListComponent implements OnInit {
+
+  departments = [
+    {"id": 1, "name": "Angular"},
+    {"id": 2, "name": "Node"},
+    {"id": 3, "name": "MangoDB"},
+    {"id": 4, "name": "Ruby"},
+    {"id": 5, "name": "Bootstrap"}
+  ]
+
+  constructor(private router: Router) { }
+
+  ngOnInit() {
+  }
+
+  onSelect(department){
+    this.router.navigate(['/departments', department.id]);
+  }
+  
+}
+```
+department-list-component.ts
+```ts
+template: `
+    <h3>You selected deaprtment with id = {{departmentId}}</h3>
+  `
+
+export class DepartmentDetailComponent implements OnInit {
+
+  public departmentId;
+
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    let id = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.departmentId = id;
+  }
+  
+}
+```
+
+---
