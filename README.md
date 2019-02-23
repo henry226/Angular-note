@@ -625,3 +625,31 @@ app.component.html
 ```
 
 ---
+
+### Wildcard route and redirection route
+app-routing.module.ts
+```ts
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+const routes: Routes = [
+  //{ path: '', component:DepartmentListComponent}, // empty path
+  { path: '', redirectTo: '/departments', pathMatch: 'full'}, // pathMatch: 'prefix' not useful in this case
+  { path: 'departments', component: DepartmentListComponent},
+  { path: 'employees', component: EmployeeListComponent},
+  { path: "**", component: PageNotFoundComponent}  // wildcard route
+];
+
+export const routingComponents = [DepartmentListComponent, EmployeeListComponent, PageNotFoundComponent]
+```
+app.module.ts
+```ts
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+declarations: [
+  AppComponent,
+  routingComponents,
+  PageNotFoundComponent
+],
+```
+
+---
