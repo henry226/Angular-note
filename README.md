@@ -699,7 +699,7 @@ export class DepartmentListComponent implements OnInit {
   onSelect(department){
     this.router.navigate(['/departments', department.id]);
   }
-  
+
 }
 ```
 department-list-component.ts
@@ -719,6 +719,39 @@ export class DepartmentDetailComponent implements OnInit {
     this.departmentId = id;
   }
   
+}
+```
+
+---
+
+### ParamMap Observable
+Template
+```ts
+template: `
+    <h3>You selected deaprtment with id = {{departmentId}}</h3>
+    <button (click)="goPrevious()">Previous</button>
+    <button (click)="goNext()">Next</button>
+  `
+```
+Class
+```ts
+ngOnInit() {
+  /*let id = parseInt(this.route.snapshot.paramMap.get('id'));
+  this.departmentId = id;*/
+  this.route.paramMap.subscribe((params: ParamMap) => {
+    let id = parseInt(params.get('id'));
+    this.departmentId = id;
+  });
+}
+
+goPrevious(){
+  let previousId = this.departmentId - 1;
+  this.router.navigate(['/departments', previousId]);
+}
+
+goNext(){
+  let nextId = this.departmentId + 1;
+  this.router.navigate(['/departments', nextId]);
 }
 ```
 
