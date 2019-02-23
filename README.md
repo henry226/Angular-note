@@ -590,3 +590,38 @@ TypeError: rxjs__WEBPACK_IMPORTED_MODULE_3__.Observable.throw is not a function
 ```
 
 ---
+
+### Routing and navigation
+app-routing.module.ts
+```ts
+import { DepartmentListComponent } from './department-list/department-list.component';
+import { EmployeeListComponent } from './employee-list/employee-list.component';
+
+const routes: Routes = [
+  { path: 'departments', component: DepartmentListComponent},
+  { path: 'employees', component: EmployeeListComponent}
+];
+
+export const routingComponents = [DepartmentListComponent, EmployeeListComponent]
+```
+app.module.ts
+```ts
+import { AppRoutingModule, routingComponents } from './app-routing.module';
+
+declarations: [
+  AppComponent,
+  routingComponents // add routing components
+],
+```
+app.component.html
+```html
+<nav>
+  <a routerLink="/departments" routerLinkActive="active">Departments</a> <br />
+  <a routerLink="/employees">Employees</a>
+</nav>
+
+<router-outlet></router-outlet>
+<!-- Routed views go here -->
+```
+
+---
