@@ -803,3 +803,39 @@ isSelected(department){
 ```
 
 ---
+
+### Relative Navigation
+department-detail.component.ts
+```ts
+template: `
+    <h3>You selected deaprtment with id = {{departmentId}}</h3>
+    <a (click)="goPrevious()">Previous </a>
+    <a (click)="goNext()">Next </a>
+
+    <div>
+      <button (click)="gotoDepartments()">Back</button>
+    </div>
+  `
+
+gotoDepartments(){
+    let selectedId = this.departmentId ? this.departmentId : null;
+    this.router.navigate(['departments', {id: selectedId}]);
+}
+```
+department-list.component.ts
+```ts
+onSelect(department){
+  //this.router.navigate(['/departments', department.id]);
+  this.router.navigate([department.id], {relativeTo: this.route});
+}
+```
+department-detail.component.ts
+```ts
+gotoDepartments(){
+  let selectedId = this.departmentId ? this.departmentId : null;
+  //this.router.navigate(['departments', {id: selectedId}]);
+  this.router.navigate(['../', {id: selectedId}], {relativeTo: this.route});
+}
+```
+
+---
