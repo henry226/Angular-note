@@ -839,3 +839,58 @@ gotoDepartments(){
 ```
 
 ---
+
+### Child Routes
+app-routing.module.ts
+```ts
+import { DepartmentOverviewComponent } from './department-overview/department-overview.component';
+import { DepartmentContactComponent } from './department-contact/department-contact.component';
+
+{ 
+  path: 'departments/:id', 
+  component:DepartmentDetailComponent,
+  children: [
+    { path: 'overview', component: DepartmentOverviewComponent},
+    { path: 'contact', component: DepartmentContactComponent}
+  ]
+}
+
+export const routingComponents = [DepartmentListComponent, 
+                                  EmployeeListComponent, 
+                                  PageNotFoundComponent,
+                                  DepartmentDetailComponent,
+                                  DepartmentOverviewComponent,
+                                  DepartmentContactComponent
+                                 ]
+```
+app.detail.component.ts
+```ts
+template: `
+  <h3>You selected deaprtment with id = {{departmentId}}</h3>
+
+  <p>
+    <button (click)="showOverview()">Overview</button>
+    <button (click)="showContact()">Contact</button>
+  </p>
+
+  <router-outlet></router-outlet>
+
+  <p>
+    <button (click)="goPrevious()">Previous </button>
+    <button (click)="goNext()">Next </button>
+  </p>
+
+  <div>
+    <button (click)="gotoDepartments()">Back</button>
+  </div>
+`,
+
+showOverview(){
+  this.router.navigate(['overview'], {relativeTo: this.route});
+}
+
+showContact(){
+  this.router.navigate(['contact'], {relativeTo: this.route});
+}
+```
+---
