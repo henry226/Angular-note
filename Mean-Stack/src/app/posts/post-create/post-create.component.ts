@@ -5,10 +5,16 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './post-create.component.html'
 })
 export class PostCreateComponent implements OnInit {
+  newPost = 'Empty';
+  enteredValue = '';
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onAddPost() {
+    this.newPost = this.enteredValue;
   }
 
 }

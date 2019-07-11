@@ -1,1 +1,9 @@
-<h1>Post create compnent!</h1>
+<!-- Two way Binding -->
+<textarea rows="6" [(ngModel)]="enteredValue"></textarea>
+<hr>
+
+<!-- Event binding -->
+<button (click)="onAddPost()">Save Post</button>
+
+<!-- String interprlation-->
+<p>{{ newPost }}</p>
