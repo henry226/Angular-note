@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 // Plotly Via CDN Module
 import { PlotlyViaCDNModule } from 'angular-plotly.js';
+import { ChildComponent } from './child/child.component';
 PlotlyViaCDNModule.plotlyVersion = '1.49.4';
 PlotlyViaCDNModule.plotlyBundle = 'basic';
 // Plotly Via CDN Module
@@ -17,7 +18,8 @@ References: https://github.com/plotly/angular-plotly.js#quick-start
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChildComponent
   ],
   imports: [
     BrowserModule,
