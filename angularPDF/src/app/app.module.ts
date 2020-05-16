@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FileManagerModule } from '@syncfusion/ej2-angular-filemanager';
+import { FileManagerModule , NavigationPaneService, ToolbarService, DetailsViewService } from '@syncfusion/ej2-angular-filemanager';
 
 
 import { AppComponent } from './app.component';
@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FileManagerModule,
   ],
-  providers: [],
+  providers: [NavigationPaneService, ToolbarService, DetailsViewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
