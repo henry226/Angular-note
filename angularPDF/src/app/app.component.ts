@@ -10,6 +10,7 @@ export class AppComponent implements OnInit{
   public hostUrl = 'https://ej2-aspcore-service.azurewebsites.net/';
   public ajaxSettings: object;
   public view: string;
+  public enablePersistence: boolean;
 
   ngOnInit() {
     this.ajaxSettings = {
@@ -20,11 +21,23 @@ export class AppComponent implements OnInit{
     };
 
     // Initial view of File Manager is set to details view
-    this.view = 'Details';
+    //this.view = 'Details';
+
+    this.enablePersistence = true;
   }
 
   // File Manager's created event function
-  OnCreat(args: any) {
-    console.log('File Manager has been created successfully');
+  // OnCreat(args: any) {
+  //   console.log('File Manager has been created successfully');
+  // }
+
+  // File Manager's file onSuccess function
+  onAjaxSuccess(args: any) {
+    console.log('Ajax request successful');
+  }
+
+  // File Manager's file onError function
+  onAjaxFailure(args: any) {
+    console.log('Ajax request has failed');
   }
 }
